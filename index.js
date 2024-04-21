@@ -12,6 +12,54 @@ let gameHead = document.querySelector("h1");
 let score = 0;
 let newSnakeBod;
 let gameOverFlag = false;
+let arrows = document.querySelectorAll(".btn");
+
+for (let i = 0; i < arrows.length; i++) {
+    arrows[i].addEventListener("click", function() {
+        console.log(this.classList.contains("up-btn"));
+
+        clearInterval(intervalId);
+
+        if ((this.classList.contains("up-btn")) && vx !== 1) {
+            vx = -1;
+            vy = 0;
+            snakeDiv.style.borderTopLeftRadius = "50%";
+            snakeDiv.style.borderTopRightRadius = "50%";
+            snakeDiv.style.borderBottomRightRadius = "0%";
+            snakeDiv.style.borderBottomLeftRadius = "0%";
+        } else if ((this.classList.contains("down-btn")) && vx !== -1) {
+            vx = 1;
+            vy = 0;
+            snakeDiv.style.borderTopLeftRadius = "0%";
+            snakeDiv.style.borderTopRightRadius = "0%";
+            snakeDiv.style.borderBottomRightRadius = "50%";
+            snakeDiv.style.borderBottomLeftRadius = "50%";
+        } else if ((this.classList.contains("left-btn")) && vy !== 1) {
+            vx = 0;
+            vy = -1;
+            snakeDiv.style.borderTopLeftRadius = "50%";
+            snakeDiv.style.borderTopRightRadius = "0%";
+            snakeDiv.style.borderBottomRightRadius = "0%";
+            snakeDiv.style.borderBottomLeftRadius = "50%";
+        } else if ((this.classList.contains("right-btn")) && vy !== -1) {
+            vx = 0;
+            vy = 1;
+            snakeDiv.style.borderTopLeftRadius = "0%";
+            snakeDiv.style.borderTopRightRadius = "50%";
+            snakeDiv.style.borderBottomRightRadius = "50%";
+            snakeDiv.style.borderBottomLeftRadius = "0%";
+        }
+
+
+        moveSnake(vx, vy);
+        intervalId = setInterval(() => {
+            moveSnake(vx, vy);
+        }, 100);
+
+
+    });
+}
+
 
 foodDiv = document.createElement("div");
 foodDiv.classList.add("food");

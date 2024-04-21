@@ -42,6 +42,29 @@
         border-radius: 50%;
     }
     
+    .buttons {
+        margin: 4rem;
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+        align-content: center;
+        justify-content: center;
+        height: 5rem;
+        width: 5rem;
+    }
+    
+    .buttons>.btn {
+        margin: 1rem;
+        font-size: 2rem;
+        background: none;
+        border: none;
+    }
+    
+    .buttons>.empty {
+        background: none;
+        border: none;
+    }
+    
     @media (max-width: 576px) {
         html {
             font-size: 10px;
@@ -56,6 +79,16 @@
 
 
         </div>
+        <div class="buttons">
+            <button class="empty"></button>
+            <button class="btn up-btn">⬆️</button>
+            <button class="empty"></button>
+            <button class="btn left-btn">⬅️</button>
+            <button class="btn down-btn">⬇️</button>
+            <button class="btn right-btn">➡️</button>
+        </div>
+
+        <p style="font-family: monospace; font-size: 1rem;color: yellow;">Alternatively, you can use W A S D on your keyboard</p>
     </div>
 
     <script src="index.js"></script>
